@@ -6,8 +6,12 @@ import sys
 import os
 import re
 from pdfminer.pdfparser import PDFParser
-from pdfminer.pdfdocument import PDFDocument
+# from pdfminer.pdfdocument import PDFDocument
+from pdfminer.pdfparser import PDFParser, PDFDocument
 from pdfminer.pdftypes import resolve1
+
+
+
 
 
 def get_fields(file_path):
@@ -17,6 +21,8 @@ def get_fields(file_path):
 
     parser = PDFParser(file_path)
     doc = PDFDocument(parser)
+    # parser = PDFParser(file_path)
+    # doc = PDFDocument()
     # parser.set_document(doc)
     # doc.set_parser(parser)
     # doc.initialize()
@@ -73,11 +79,11 @@ input_dir_path = os.path.dirname(abspath)
 output_path = os.path.join(input_dir_path, "output.odt")
 
 # get all pdf files in directory
-filenames = filter(regx.search, os.listdir(input_dir_path))
+filenames = list(filter(regx.search, os.listdir(input_dir_path)))
 output_file = open(output_path, "w")
 
 # write header to output
-output_file.write("%s\n" % get_record_header_string(input_dir_path, filenames[0]))
+output_file.write("{}\n".format(get_record_header_string(input_dir_path, filenames[0])))
 
 # fill in form data from files
 # for f in filenames:
