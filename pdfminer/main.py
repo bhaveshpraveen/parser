@@ -48,6 +48,8 @@ def FillForm(list):
     fields_filled = []
     # for i in list:
     #     if not Field_to_ignore(i):
+    
+    # for testing only
     fields = [('Given Name Text Box', 'Bhavesh'), ('Family Name Text Box', 'Praveen')]
     fdf = forge_fdf("", fields)
     fdf_file = open('/home/ichigo/Desktop/test_outputs/data.fdf', 'wb')
